@@ -194,8 +194,8 @@ const SECCIONES_SOCIO = [
   { id:"educacion", titulo:"Nivel Educativo", tag:"Datos personales · 4 de 5", campos:[
     {id:"nivel_educativo",label:"Nivel educativo",tipo:"select",req:true,ops:["Primaria incompleta","Primaria completa","Bachillerato incompleto","Bachillerato completo","Técnico","Tecnológico","Profesional universitario","Especialización","Maestría","Doctorado"]},
     {id:"area_estudio",label:"Área de estudio",tipo:"text",req:false,ph:"Ej: Ingeniería, Contabilidad, RRHH",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta","Primaria completa","Bachillerato incompleto","Bachillerato completo"]},
-    {id:"institucion_educativa",label:"Institución educativa (último nivel)",tipo:"text",req:false,ph:"Nombre de la institución",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta"]},
-    {id:"fecha_graduacion",label:"Fecha de graduación o últimos estudios",tipo:"date_grad",req:false,depende:"nivel_educativo",noAplica:["Primaria incompleta"]},
+    {id:"institucion_educativa",label:"Institución educativa (último nivel)",tipo:"text",req:false,ph:"Nombre de la institución",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta","Bachillerato incompleto"]},
+    {id:"fecha_graduacion",label:"Fecha de graduación / últimos estudios",tipo:"date_grad",req:false,depende:"nivel_educativo",noAplica:["Primaria incompleta"]},
   ]},
   { id:"experiencia", titulo:"Experiencia Laboral", tag:"Datos personales · 5 de 5", campos:[
     {id:"tipo_experiencia",label:"Tipo de experiencia laboral",tipo:"select",req:true,ops:["Sin experiencia laboral","Menos de 1 año","Entre 1 y 3 años","Entre 3 y 5 años","Más de 5 años"]},
@@ -283,8 +283,8 @@ function renderSecciones() {
           <div id="wrap_estudiando" style="display:none;margin-top:8px;">
             <select id="sel_estudiando" style="width:100%;padding:9px 12px;border:2px solid #d0e8dc;border-radius:9px;font-size:14px;font-family:'Source Sans 3',sans-serif;outline:none;background:white;color:#3a3a3a;">
               <option value="">-- Seleccione --</option>
-              <option value="si">Sí, estoy estudiando actualmente</option>
-              <option value="no">No estoy estudiando actualmente</option>
+              <option value="si">Sí, actualmente estoy estudiando</option>
+              <option value="no">No, actualmente no estoy estudiando</option>
             </select>
           </div>
         </div>`;
@@ -318,6 +318,7 @@ function renderSecciones() {
             var wrapEst = document.getElementById('wrap_estudiando');
             var inputFecha = document.getElementById('f_fecha_graduacion');
             if (wrapFecha && inputFecha) {
+              var labelFecha = document.querySelector('label[for="f_fecha_graduacion"]');
               if (esIncompleto) {
                 // Ocultar campo fecha, mostrar select "Estudiando actualmente"
                 inputFecha.style.display = 'none';
@@ -326,11 +327,13 @@ function renderSecciones() {
                 if (wrapEst) wrapEst.style.display = 'block';
                 var selEst = document.getElementById('sel_estudiando');
                 if (selEst) selEst.value = ''; // sin forzar, queda en blanco
+                if (labelFecha) labelFecha.textContent = '¿Actualmente está estudiando?';
               } else {
                 // Mostrar campo fecha normalmente
                 inputFecha.style.display = '';
                 inputFecha.disabled = false;
                 if (wrapEst) wrapEst.style.display = 'none';
+                if (labelFecha) labelFecha.textContent = 'Fecha de graduación / últimos estudios';
               }
             }
           }
@@ -402,9 +405,13 @@ function navSec(dir) {
         const grp = document.getElementById("grp_" + c.id);
         if (el && (!grp || grp.style.display !== 'none')) datosSocio[c.id] = el.value.trim();
       });
-      // Guardar select "Estudiando actualmente" en variable separada (no va a Supabase)
+      // Si es nivel incompleto, guardar respuesta de "¿Está estudiando?" como fecha_graduacion
       const selEst = document.getElementById("sel_estudiando");
-      if (selEst && selEst.value) datosSocio["estudiando_actualmente"] = selEst.value;
+      if (selEst && selEst.offsetParent !== null && selEst.value) {
+        // El select es visible → nivel incompleto → guardar la respuesta
+        datosSocio["fecha_graduacion"] = null; // no hay fecha de graduación
+        datosSocio["estudiando_actualmente"] = selEst.value;
+      }
     } else {
       const ci = secActual - SECCIONES_SOCIO.length;
       const sec = SECCIONES_CLIMA[ci];
