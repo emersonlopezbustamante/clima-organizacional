@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico de Clima Organizacional – Comfenalco Antioquia</title>
+<title>Encuesta de Clima Organizacional – Comfenalco Antioquia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root{--verde:#094a4b;--verde-claro:#e8f4ef;--verde-pist:#8DC63F;--dorado:#F2A900;--rojo:#C8102E;--gris:#3a3a3a;}
@@ -97,8 +97,8 @@
 <div class="container">
 
 <div class="card" id="introCard">
-  <h1 class="card-title">Diagnóstico de Clima Organizacional</h1>
-  <p style="font-size:13.5px;color:#666;line-height:1.7">Este formulario tiene dos partes: <strong>datos sociodemográficos</strong> (para registro en el Servicio Público de Empleo) y la <strong>encuesta de clima organizacional</strong>. Sus respuestas son confidenciales y los resultados se presentan de forma <strong>agregada</strong> sin identificar personas.</p>
+  <h1 class="card-title">Encuesta de Clima Organizacional</h1>
+  <p style="font-size:13.5px;color:#666;line-height:1.7">Este formulario tiene dos partes: <strong>datos sociodemográficos</strong> (para registro en el Servicio Público de Empleo) y la <strong>Encuesta de Clima Organizacional</strong>. Sus respuestas son confidenciales y los resultados se presentan de forma <strong>agregada</strong> sin identificar personas.</p>
 </div>
 
 <!-- CONSENTIMIENTO -->
@@ -153,7 +153,7 @@
 <div class="gracias" id="graciasMsg">
   <div class="ico">✅</div>
   <h2>¡Gracias por participar!</h2>
-  <p style="color:rgba(255,255,255,0.9);font-size:14px;line-height:1.7">Sus datos y respuestas fueron registrados correctamente.<br>Contribuyen al diagnóstico del clima organizacional y a su proceso de empleabilidad.</p>
+  <p style="color:rgba(255,255,255,0.9);font-size:14px;line-height:1.7">Sus datos y respuestas fueron registrados correctamente.<br>Contribuyen a la Encuesta de Clima Organizacional y a su proceso de empleabilidad.</p>
   <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.7)">Puede cerrar esta ventana.</p>
 </div>
 
@@ -193,9 +193,9 @@ const SECCIONES_SOCIO = [
   ]},
   { id:"educacion", titulo:"Nivel Educativo", tag:"Datos personales · 4 de 5", campos:[
     {id:"nivel_educativo",label:"Nivel educativo",tipo:"select",req:true,ops:["Primaria incompleta","Primaria completa","Bachillerato incompleto","Bachillerato completo","Técnico","Tecnológico","Profesional universitario","Especialización","Maestría","Doctorado"]},
-    {id:"area_estudio",label:"Área de estudio",tipo:"text",req:false,ph:"Ej: Ingeniería, Contabilidad, RRHH",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta","Primaria completa"]},
-    {id:"institucion_educativa",label:"Institución educativa (último nivel)",tipo:"text",req:false,ph:"Nombre de la institución",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta","Primaria completa"]},
-    {id:"fecha_graduacion",label:"Fecha de graduación o últimos estudios",tipo:"date",req:false,depende:"nivel_educativo",noAplica:["Primaria incompleta","Primaria completa"]},
+    {id:"area_estudio",label:"Área de estudio",tipo:"text",req:false,ph:"Ej: Ingeniería, Contabilidad, RRHH",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta","Primaria completa","Bachillerato incompleto","Bachillerato completo"]},
+    {id:"institucion_educativa",label:"Institución educativa (último nivel)",tipo:"text",req:false,ph:"Nombre de la institución",full:true,depende:"nivel_educativo",noAplica:["Primaria incompleta"]},
+    {id:"fecha_graduacion",label:"Fecha de graduación o últimos estudios",tipo:"date_grad",req:false,depende:"nivel_educativo",noAplica:["Primaria incompleta"]},
   ]},
   { id:"experiencia", titulo:"Experiencia Laboral", tag:"Datos personales · 5 de 5", campos:[
     {id:"tipo_experiencia",label:"Tipo de experiencia laboral",tipo:"select",req:true,ops:["Sin experiencia laboral","Menos de 1 año","Entre 1 y 3 años","Entre 3 y 5 años","Más de 5 años"]},
@@ -221,6 +221,7 @@ const TOTAL_SECS = SECCIONES_SOCIO.length + SECCIONES_CLIMA.length;
 
 let secActual = 0, datosSocio = {}, respuestasClima = {}, empresa = "";
 
+
 function iniciarFormulario() {
   const chk = document.getElementById("chkConsent");
   const errConsent = document.getElementById("errConsent");
@@ -235,7 +236,7 @@ function iniciarFormulario() {
     if (errInicio) errInicio.textContent = "⚠ Ingrese el nombre de su empresa antes de continuar.";
     return;
   }
-  empresa = v.trim();
+  empresa = v.trim().toLowerCase();
   if (errInicio) errInicio.textContent = "";
   try {
     ["introCard","consentCard","empresaField","startArea"].forEach(id => {
@@ -276,6 +277,16 @@ function renderSecciones() {
         html += `<select id="f_${c.id}"><option value="">-- Seleccione departamento --</option>${DPT_OPTS}</select>`;
       } else if (c.tipo === "number" || c.tipo === "tel") {
         html += `<input type="text" inputmode="numeric" id="f_${c.id}" placeholder="${c.ph||''}" oninput="this.value=this.value.replace(/[^0-9]/g,'')">`;
+      } else if (c.tipo === "date_grad") {
+        html += `<div id="wrap_fecha_grad">
+          <input type="date" id="f_${c.id}" placeholder="${c.ph||''}">
+          <div id="wrap_estudiando" style="display:none;margin-top:8px;">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;color:#555">
+              <input type="checkbox" id="chk_estudiando" style="width:16px;height:16px;accent-color:var(--verde-pist);cursor:pointer;">
+              Estudiando actualmente
+            </label>
+          </div>
+        </div>`;
       } else {
         html += `<input type="${c.tipo}" id="f_${c.id}" placeholder="${c.ph||''}">`;
       }
@@ -299,6 +310,34 @@ function renderSecciones() {
             var inp = grp.querySelector('input,select');
             if(inp) inp.disabled = ocultar;
           });
+          // Lógica especial para fecha de graduación vs "Estudiando actualmente"
+          if (dispId === 'nivel_educativo') {
+            var esIncompleto = val.indexOf('incompleto') >= 0 || val.indexOf('Incompleto') >= 0;
+            var wrapFecha = document.getElementById('wrap_fecha_grad');
+            var wrapEst = document.getElementById('wrap_estudiando');
+            var inputFecha = document.getElementById('f_fecha_graduacion');
+            var chkEst = document.getElementById('chk_estudiando');
+            if (wrapFecha && inputFecha) {
+              if (esIncompleto) {
+                // Ocultar campo fecha, mostrar opción "Estudiando actualmente"
+                inputFecha.style.display = 'none';
+                inputFecha.disabled = true;
+                inputFecha.value = '';
+                if (wrapEst) wrapEst.style.display = 'block';
+                if (chkEst) {
+                  chkEst.checked = true; // por defecto activado
+                  datosSocio['estudiando_actualmente'] = true;
+                }
+              } else {
+                // Mostrar campo fecha normalmente
+                inputFecha.style.display = '';
+                inputFecha.disabled = false;
+                if (wrapEst) wrapEst.style.display = 'none';
+                if (chkEst) { chkEst.checked = false; }
+                datosSocio['estudiando_actualmente'] = false;
+              }
+            }
+          }
         }
         sel.addEventListener('change', actualizar);
         actualizar();
@@ -367,6 +406,9 @@ function navSec(dir) {
         const grp = document.getElementById("grp_" + c.id);
         if (el && (!grp || grp.style.display !== 'none')) datosSocio[c.id] = el.value.trim();
       });
+      // Guardar checkbox "Estudiando actualmente" si existe
+      const chkEst = document.getElementById("chk_estudiando");
+      if (chkEst) datosSocio["estudiando_actualmente"] = chkEst.checked;
     } else {
       const ci = secActual - SECCIONES_SOCIO.length;
       const sec = SECCIONES_CLIMA[ci];
