@@ -402,9 +402,9 @@ function navSec(dir) {
         const grp = document.getElementById("grp_" + c.id);
         if (el && (!grp || grp.style.display !== 'none')) datosSocio[c.id] = el.value.trim();
       });
-      // Guardar select "Estudiando actualmente" si existe
+      // Guardar select "Estudiando actualmente" en variable separada (no va a Supabase)
       const selEst = document.getElementById("sel_estudiando");
-      if (selEst) datosSocio["estudiando_actualmente"] = selEst.value || null;
+      if (selEst && selEst.value) datosSocio["estudiando_actualmente"] = selEst.value;
     } else {
       const ci = secActual - SECCIONES_SOCIO.length;
       const sec = SECCIONES_CLIMA[ci];
@@ -484,7 +484,10 @@ async function enviarTodo() {
     });
     puntajes["dim_"+d.id] = total;
   });
-  const payload = {empresa, fecha: new Date().toISOString(), consentimiento: true, ...datosSocio, ...respuestasClima, ...puntajes};
+  const {estudiando_actualmente: _est, ...datosSocioLimpio} = datosSocio;
+  const payloadRaw = {empresa, fecha: new Date().toISOString(), consentimiento: true, ...datosSocioLimpio, ...respuestasClima, ...puntajes};
+  // Convertir strings vacíos a null para evitar errores en columnas date/numeric
+  const payload = Object.fromEntries(Object.entries(payloadRaw).map(([k,v]) => [k, v === "" ? null : v]));
   try {
     const {error} = await supabaseClient.from("respuestas_clima").insert([payload]);
     if (error) throw error;
