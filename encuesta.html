@@ -281,10 +281,11 @@ function renderSecciones() {
         html += `<div id="wrap_fecha_grad">
           <input type="date" id="f_${c.id}" placeholder="${c.ph||''}">
           <div id="wrap_estudiando" style="display:none;margin-top:8px;">
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;color:#555">
-              <input type="checkbox" id="chk_estudiando" style="width:16px;height:16px;accent-color:var(--verde-pist);cursor:pointer;">
-              Estudiando actualmente
-            </label>
+            <select id="sel_estudiando" style="width:100%;padding:9px 12px;border:2px solid #d0e8dc;border-radius:9px;font-size:14px;font-family:'Source Sans 3',sans-serif;outline:none;background:white;color:#3a3a3a;">
+              <option value="">-- Seleccione --</option>
+              <option value="si">Sí, estoy estudiando actualmente</option>
+              <option value="no">No estoy estudiando actualmente</option>
+            </select>
           </div>
         </div>`;
       } else {
@@ -316,25 +317,20 @@ function renderSecciones() {
             var wrapFecha = document.getElementById('wrap_fecha_grad');
             var wrapEst = document.getElementById('wrap_estudiando');
             var inputFecha = document.getElementById('f_fecha_graduacion');
-            var chkEst = document.getElementById('chk_estudiando');
             if (wrapFecha && inputFecha) {
               if (esIncompleto) {
-                // Ocultar campo fecha, mostrar opción "Estudiando actualmente"
+                // Ocultar campo fecha, mostrar select "Estudiando actualmente"
                 inputFecha.style.display = 'none';
                 inputFecha.disabled = true;
                 inputFecha.value = '';
                 if (wrapEst) wrapEst.style.display = 'block';
-                if (chkEst) {
-                  chkEst.checked = true; // por defecto activado
-                  datosSocio['estudiando_actualmente'] = true;
-                }
+                var selEst = document.getElementById('sel_estudiando');
+                if (selEst) selEst.value = ''; // sin forzar, queda en blanco
               } else {
                 // Mostrar campo fecha normalmente
                 inputFecha.style.display = '';
                 inputFecha.disabled = false;
                 if (wrapEst) wrapEst.style.display = 'none';
-                if (chkEst) { chkEst.checked = false; }
-                datosSocio['estudiando_actualmente'] = false;
               }
             }
           }
@@ -406,9 +402,9 @@ function navSec(dir) {
         const grp = document.getElementById("grp_" + c.id);
         if (el && (!grp || grp.style.display !== 'none')) datosSocio[c.id] = el.value.trim();
       });
-      // Guardar checkbox "Estudiando actualmente" si existe
-      const chkEst = document.getElementById("chk_estudiando");
-      if (chkEst) datosSocio["estudiando_actualmente"] = chkEst.checked;
+      // Guardar select "Estudiando actualmente" si existe
+      const selEst = document.getElementById("sel_estudiando");
+      if (selEst) datosSocio["estudiando_actualmente"] = selEst.value || null;
     } else {
       const ci = secActual - SECCIONES_SOCIO.length;
       const sec = SECCIONES_CLIMA[ci];
