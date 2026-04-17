@@ -904,57 +904,65 @@ async function generarPDF() {
 
   const recomendaciones = {
     condiciones_fisicas: {
-      alta: { rec: "Condiciones físicas percibidas favorablemente. Mantener programa de mantenimiento preventivo y actualizar periódicamente equipos y mobiliario ergonómico.", caps: "Seguridad y Salud en el Trabajo · Ergonomía laboral · Prevención de riesgos · Primeros auxilios" },
-      media: { rec: "Oportunidad de mejora en condiciones físicas. Realizar diagnóstico de ergonomía, priorizar mejoras en iluminación, ventilación y distribución del espacio.", caps: "Seguridad y Salud en el Trabajo · Ergonomía y posturas · Higiene industrial · Gestión de riesgos" },
-      baja: { rec: "PRIORITARIO: Las condiciones físicas representan un riesgo. Urgente revisar instalaciones e implementar mejoras ergonómicas.", caps: "Seguridad y Salud en el Trabajo (SST) · Inspección de puestos · SG-SST · Gestión de riesgos laborales" }
+      alta: { rec: "Las condiciones físicas y ambientales del lugar de trabajo son valoradas positivamente por el equipo. Este resultado refleja el compromiso institucional con ambientes laborales seguros y cómodos. Se recomienda sostener el programa de mantenimiento preventivo, realizar inspecciones periódicas de puestos de trabajo con criterios de ergonomía participativa, e incorporar las sugerencias de los propios colaboradores como insumo de mejora continua. Aproveche este capital de bienestar para comunicarlo como factor diferenciador en la atracción y retención del talento.", caps: "Seguridad y Salud en el Trabajo (SG-SST) · Ergonomía y bienestar laboral · Inspección de puestos · Primeros auxilios y gestión de emergencias · Prevención de riesgos físicos y locativos" },
+      media: { rec: "Se identifican áreas de mejora en las condiciones físicas del entorno laboral. Los colaboradores perciben algunos aspectos como deficientes, lo que puede incidir en la salud, la concentración y la productividad. Se recomienda aplicar un diagnóstico detallado de ergonomía por áreas, priorizando iluminación, ventilación, temperatura, ruido y distribución del espacio. Involucre al COPASST en la priorización de intervenciones y documente las mejoras implementadas con seguimiento visible para el equipo.", caps: "Seguridad y Salud en el Trabajo · Ergonomía, posturas y pausas activas · Higiene industrial · Gestión del SG-SST · Bienestar integral del trabajador" },
+      baja: { rec: "ALERTA CRÍTICA: Las condiciones físicas del entorno laboral representan un riesgo real para la salud y el desempeño de los colaboradores. Esta situación exige una respuesta institucional inmediata. Se recomienda activar el plan de mejoramiento del SG-SST, adelantar inspecciones urgentes con el COPASST, documentar los riesgos identificados y establecer un cronograma de intervención con fechas y responsables claros. Las deficiencias no atendidas generan ausentismo, incidentes laborales y deterioro acelerado del clima organizacional.", caps: "SG-SST y gestión de riesgos laborales · Inspección técnica de instalaciones · Ergonomía correctiva · Prevención de accidentes y enfermedades laborales · Normatividad SST (Resolución 0312 de 2019)" }
     },
     beneficios_laborales: {
-      alta: { rec: "Percepción salarial positiva. Mantener transparencia en compensación y comunicar el valor total de la remuneración.", caps: "Finanzas personales · Educación financiera · Planificación económica familiar" },
-      media: { rec: "Insatisfacción moderada con remuneración. Realizar estudio de equidad salarial y comunicar beneficios no monetarios disponibles.", caps: "Finanzas personales · Compensación y beneficios · Negociación · Emprendimiento y autoempleo" },
-      baja: { rec: "PRIORITARIO: Alta insatisfacción salarial. Revisar escala salarial y diseñar estrategia de comunicación sobre compensación total.", caps: "Emprendimiento y autoempleo · Finanzas personales · Generación de ingresos · Negocios digitales" }
+      alta: { rec: "Los colaboradores valoran positivamente la remuneración y los beneficios recibidos, lo que contribuye a la estabilidad, el sentido de equidad y el compromiso organizacional. Se recomienda mantener la transparencia en la política salarial, comunicar con claridad el valor total del paquete de compensación incluyendo beneficios extra-legales y ventajas no monetarias, y explorar beneficios complementarios de bajo costo y alto impacto como la flexibilidad horaria, el reconocimiento no monetario y el acceso a formación continua.", caps: "Compensación y beneficios estratégicos · Educación financiera y bienestar económico · Planificación patrimonial familiar · Ahorro y fondos de empleados · Cultura de reconocimiento laboral" },
+      media: { rec: "Existe una insatisfacción moderada con la remuneración y los beneficios que, si no se atiende, puede escalar hacia mayor rotación o desmotivación. Se recomienda realizar un estudio de equidad salarial interno y comparativo con el sector, comunicar activamente todos los beneficios disponibles más allá del salario base, y diseñar un programa de beneficios flexibles que permita a cada colaborador elegir las opciones más relevantes para sus necesidades. El diálogo abierto sobre compensación genera confianza y reduce la percepción de inequidad.", caps: "Compensación y beneficios · Finanzas personales y educación financiera · Negociación y comunicación asertiva · Gestión del bienestar laboral · Emprendimiento como complemento de ingresos" },
+      baja: { rec: "ALERTA CRÍTICA: La alta insatisfacción con la remuneración y los beneficios constituye un factor de riesgo severo para la retención del talento y puede estar generando fuga de conocimiento y rotación elevada. Se recomienda activar con urgencia una revisión de la escala salarial contrastada con el mercado sectorial, diseñar una estrategia de comunicación que visibilice el valor real del paquete de compensación total, y evaluar la viabilidad de implementar beneficios extra-legales de impacto inmediato. La escucha activa de los colaboradores en este proceso es fundamental.", caps: "Revisión y diseño de estructuras salariales · Finanzas personales y generación de ingresos alternativos · Emprendimiento y autoempleo · Economía digital y negocios · Gestión del bienestar y retención de talento" }
     },
     politicas_administrativas: {
-      alta: { rec: "Políticas bien percibidas. Continuar comunicación clara y promover participación en revisión de normas.", caps: "Cultura organizacional · Comunicación interna · Gestión por competencias · Liderazgo" },
-      media: { rec: "Inconformidad con algunas políticas. Revisar manual de convivencia y mecanismos de reconocimiento.", caps: "Convivencia laboral · Habilidades del Siglo XXI · Comunicación asertiva · Gestión del tiempo" },
-      baja: { rec: "PRIORITARIO: Políticas generan malestar. Revisar normas y establecer canales de sugerencias y resolución de conflictos.", caps: "Convivencia y clima laboral · Resolución de conflictos · Ética laboral · Prevención acoso laboral" }
+      alta: { rec: "Las políticas administrativas y organizacionales son percibidas de forma positiva, lo que indica que las normas, procedimientos y prácticas institucionales están alineados con las expectativas del equipo. Se recomienda mantener la comunicación clara y oportuna de los cambios normativos, fomentar espacios de participación en la revisión y actualización de políticas, y continuar promoviendo una cultura de equidad, transparencia y reconocimiento del desempeño como pilares del contrato psicológico con los colaboradores.", caps: "Cultura organizacional y valores institucionales · Comunicación interna estratégica · Gestión por competencias · Liderazgo participativo · Diseño y actualización de manuales de convivencia" },
+      media: { rec: "Se identifican inconformidades con algunas políticas, procedimientos o prácticas de reconocimiento institucional, lo que puede generar sensación de inequidad o desmotivación. Se recomienda revisar el manual de convivencia laboral, evaluar las políticas de reconocimiento y ascenso, y crear canales formales de retroalimentación donde los colaboradores puedan expresar inquietudes. La participación activa del equipo en la revisión de normas aumenta la legitimidad de las políticas y reduce la resistencia organizacional.", caps: "Convivencia laboral y clima organizacional · Comunicación asertiva y feedback · Habilidades del Siglo XXI · Gestión del tiempo y productividad · Liderazgo y gestión de equipos" },
+      baja: { rec: "ALERTA CRÍTICA: Las políticas y prácticas administrativas están generando malestar generalizado en el equipo, lo que puede traducirse en ausentismo, resistencia organizacional y deterioro del clima laboral. Se recomienda adelantar una auditoría participativa de las normas institucionales, identificar las políticas percibidas como injustas o desactualizadas, y establecer canales formales de sugerencias y resolución de conflictos. La revisión de políticas debe ser un proceso transparente con retroalimentación visible hacia el equipo.", caps: "Convivencia y clima organizacional · Resolución de conflictos y mediación laboral · Ética laboral e integridad corporativa · Prevención del acoso laboral (Ley 1010/2006) · Gestión participativa y co-creación de normas" }
     },
     relaciones_sociales: {
-      alta: { rec: "Relaciones interpersonales positivas. Mantener actividades de integración y espacios colaborativos.", caps: "Trabajo en equipo · Inteligencia emocional · Liderazgo colaborativo · Comunicación efectiva" },
-      media: { rec: "Relaciones con áreas de mejora. Implementar talleres de trabajo en equipo y promover cultura de respeto.", caps: "Trabajo en equipo · Comunicación asertiva · Manejo de conflictos · Inteligencia emocional" },
-      baja: { rec: "PRIORITARIO: Ambiente relacional problemático. Intervención con mediación y formación en comunicación.", caps: "Convivencia laboral · Resolución de conflictos · Trabajo colaborativo · Comunicación no violenta" }
+      alta: { rec: "Las relaciones interpersonales en el equipo son sólidas y positivas, lo que constituye un factor protector clave del clima organizacional. Los vínculos de confianza y cooperación entre compañeros favorecen el trabajo en equipo, la comunicación fluida y la resolución ágil de problemas. Se recomienda continuar promoviendo espacios de integración, celebración de logros colectivos y actividades de team building. Aproveche este capital social para fortalecer comunidades de práctica internas y potenciar el aprendizaje colaborativo.", caps: "Trabajo en equipo de alto desempeño · Inteligencia emocional y habilidades sociales · Liderazgo colaborativo y distribuido · Comunicación efectiva · Gestión de la diversidad e inclusión" },
+      media: { rec: "Las relaciones interpersonales presentan áreas de mejora que, de no atenderse, pueden convertirse en fuentes de conflicto o tensión grupal. Se recomienda implementar talleres vivenciales de trabajo en equipo, comunicación asertiva e inteligencia emocional. Es importante que los líderes promuevan activamente una cultura de respeto, escucha activa y reconocimiento entre pares. La detección temprana de tensiones y su abordaje constructivo previene la escalada de conflictos y protege el bienestar colectivo.", caps: "Trabajo en equipo y cohesión grupal · Comunicación asertiva y no violenta · Manejo constructivo de conflictos · Inteligencia emocional y empatía · Habilidades blandas para el trabajo colaborativo" },
+      baja: { rec: "ALERTA CRÍTICA: El ambiente relacional presenta problemas significativos que requieren intervención profesional urgente. La presencia de conflictos, desconfianza o ruptura en las relaciones interpersonales deteriora el bienestar y reduce la productividad colectiva. Se recomienda activar un proceso de diagnóstico relacional, implementar mediación profesional de conflictos, diseñar talleres de comunicación no violenta y establecer un protocolo claro de convivencia laboral con rutas de atención definidas para el equipo.", caps: "Convivencia laboral y protocolo de conflictos · Resolución y mediación de conflictos · Comunicación no violenta y asertiva · Trabajo colaborativo y reconstrucción de confianza · Prevención del acoso laboral y mobbing" }
     },
     desarrollo_personal: {
-      alta: { rec: "Colaboradores encuentran crecimiento. Mantener planes de carrera, formación y reconocimiento al logro.", caps: "Habilidades del Siglo XXI · Liderazgo personal · Negocios digitales · Creatividad e innovación" },
-      media: { rec: "Desarrollo personal con oportunidades de mejora. Implementar planes individuales y fortalecer retroalimentación.", caps: "Orientación laboral Soy Talento · Plan Individual de Desarrollo · Habilidades blandas · Emprendimiento" },
-      baja: { rec: "PRIORITARIO: Colaboradores no perciben crecimiento. Diseñar planes de carrera e implementar formación técnica.", caps: "Programa Soy Talento · Ruta de Empleabilidad · Evaluación de competencias · Formación técnica por sectores" }
+      alta: { rec: "Los colaboradores perciben que la organización ofrece oportunidades reales de crecimiento personal y profesional, lo que genera compromiso, sentido de pertenencia y motivación sostenida. Este resultado es un factor diferenciador clave en la atracción y retención del talento. Se recomienda consolidar los planes de carrera y desarrollo individual, fortalecer los espacios de formación continua, reconocer públicamente los logros de crecimiento y conectar las metas personales de los colaboradores con los objetivos estratégicos de la organización.", caps: "Planes de carrera y desarrollo profesional · Habilidades del Siglo XXI e innovación · Liderazgo personal y marca profesional · Negocios digitales y emprendimiento · Creatividad, innovación y gestión del conocimiento" },
+      media: { rec: "Se identifican oportunidades de mejora en la percepción de crecimiento y desarrollo dentro de la organización. Los colaboradores pueden sentir que su potencial no está siendo aprovechado o que las oportunidades de avance son limitadas. Se recomienda diseñar e implementar Planes Individuales de Desarrollo, fortalecer los procesos de retroalimentación formal, ofrecer acceso a programas de formación técnica y blanda, y crear rutas de progresión visibles y alcanzables dentro de la estructura organizacional.", caps: "Orientación laboral y Plan Individual de Desarrollo · Evaluación y gestión por competencias · Habilidades blandas y liderazgo · Formación técnica y actualización profesional · Emprendimiento y empleabilidad" },
+      baja: { rec: "ALERTA CRÍTICA: La baja percepción de crecimiento y desarrollo personal es uno de los factores más críticos para la retención del talento y la motivación intrínseca. Los colaboradores no visualizan un futuro de crecimiento dentro de la organización, lo que puede derivar en desenganche laboral o rotación. Se recomienda rediseñar la estrategia de desarrollo humano: construir planes de carrera claros, implementar programas de mentoría interna, ofrecer formación técnica certificada y conectar explícitamente el desempeño con las oportunidades de ascenso.", caps: "Programa Soy Talento · Ruta de Empleabilidad · Evaluación y certificación de competencias · Formación técnica por sectores productivos · Emprendimiento y autoempleo como alternativa de desarrollo" }
     },
     desempeno_tareas: {
-      alta: { rec: "Tareas percibidas como valiosas. Comunicar el impacto del trabajo en los objetivos organizacionales.", caps: "Gestión por resultados · Productividad laboral · Innovación y mejora continua" },
-      media: { rec: "Algunas tareas percibidas como rutinarias. Revisar descripciones de cargo y enriquecer funciones.", caps: "Gestión por competencias · Productividad y eficiencia · Habilidades técnicas por sector · Negocios digitales" },
-      baja: { rec: "PRIORITARIO: Colaboradores no encuentran valor en sus tareas. Rediseñar puestos y construir propósito colectivo.", caps: "Emprendimiento y autoempleo · Ruta de Empleabilidad · Laboratorios de Empleo · Fomento Empresarial" }
+      alta: { rec: "Los colaboradores perciben sus tareas como relevantes, desafiantes y alineadas con sus capacidades y los objetivos de la organización. Esta dimensión refleja un alto sentido de propósito laboral que impacta directamente en la productividad, la calidad del trabajo y el compromiso. Se recomienda mantener la comunicación constante sobre el impacto del trabajo individual en los resultados organizacionales, enriquecer periódicamente las funciones para evitar la rutinización y reconocer la contribución individual y colectiva de forma regular y explícita.", caps: "Gestión por resultados y OKRs · Productividad laboral y eficiencia operativa · Innovación y mejora continua de procesos · Diseño de cargos por competencias · Reconocimiento y motivación intrínseca" },
+      media: { rec: "Algunos colaboradores perciben sus tareas como repetitivas, poco desafiantes o desconectadas de un propósito mayor, lo que puede generar desmotivación progresiva. Se recomienda revisar y actualizar las descripciones de cargo incorporando variedad, autonomía y retroalimentación; diseñar proyectos transversales que permitan aplicar habilidades diversas; y comunicar de forma sistemática cómo cada rol contribuye a los resultados estratégicos de la organización.", caps: "Gestión por competencias y descripción de cargos · Productividad y eficiencia en el trabajo · Habilidades técnicas sectoriales · Negocios digitales y transformación del trabajo · Innovación aplicada a procesos" },
+      baja: { rec: "ALERTA CRÍTICA: Los colaboradores no encuentran valor ni propósito en sus tareas cotidianas, lo que representa uno de los predictores más fuertes del desenganche laboral y la rotación. Este resultado requiere una intervención estructural en el diseño del trabajo. Se recomienda adelantar un proceso participativo de rediseño de puestos incorporando autonomía y variedad de habilidades, construir narrativas de propósito colectivo que conecten el trabajo diario con el impacto social y organizacional, y explorar modelos de enriquecimiento del trabajo.", caps: "Rediseño y enriquecimiento de puestos de trabajo · Emprendimiento y autoempleo · Ruta de Empleabilidad · Laboratorios de Empleo · Fomento Empresarial y nuevos modelos de trabajo" }
     },
     relacion_autoridad: {
-      alta: { rec: "Relación con líderes cordial y de confianza. Mantener liderazgo cercano y reconocimiento del esfuerzo.", caps: "Liderazgo transformacional · Coaching de equipos · Comunicación efectiva para líderes" },
-      media: { rec: "Relación con superiores con áreas de mejora. Capacitar líderes en feedback bidireccional y reconocimiento.", caps: "Liderazgo y gestión de equipos · Comunicación asertiva · Inteligencia emocional · Habilidades directivas" },
-      baja: { rec: "PRIORITARIO: Relación con la autoridad crítica. Intervención urgente en liderazgo y canales de comunicación.", caps: "Liderazgo humanizado · Convivencia laboral · Prevención acoso laboral (Ley 1010/2006) · Resolución de conflictos" }
+      alta: { rec: "La relación entre los colaboradores y sus líderes es percibida como cercana, justa y respetuosa, lo que constituye un pilar fundamental del clima organizacional positivo. El liderazgo efectivo genera confianza, seguridad psicológica y compromiso profundo. Se recomienda mantener prácticas de liderazgo cercano y humano: reuniones regulares de retroalimentación individual, reconocimiento explícito del esfuerzo y los logros, y espacios de participación en la toma de decisiones. Los líderes deben continuar desarrollando competencias de coaching y comunicación empática.", caps: "Liderazgo transformacional y humanizado · Coaching de equipos y liderazgo situacional · Comunicación efectiva y feedback continuo · Gestión del reconocimiento y la motivación · Inteligencia emocional para líderes" },
+      media: { rec: "La relación con las figuras de autoridad presenta oportunidades de mejora que, de no atenderse, pueden erosionar la confianza y el compromiso del equipo. Se recomienda diseñar un programa de fortalecimiento del liderazgo enfocado en feedback bidireccional, escucha activa, reconocimiento del desempeño y gestión de conversaciones difíciles. Es fundamental que los líderes desarrollen la capacidad de dar y recibir retroalimentación de forma constructiva, y que el equipo perciba que sus aportes y preocupaciones son valorados.", caps: "Liderazgo y gestión de equipos · Comunicación asertiva y feedback · Inteligencia emocional para líderes · Habilidades directivas y coaching · Gestión del desempeño y reconocimiento" },
+      baja: { rec: "ALERTA CRÍTICA: La relación con la autoridad ha alcanzado un nivel crítico que requiere intervención inmediata y estructurada. La percepción negativa del liderazgo impacta directamente en la motivación, la confianza institucional y el bienestar del equipo. Se recomienda activar un proceso de diagnóstico del estilo de liderazgo imperante, implementar programas intensivos de desarrollo directivo, establecer protocolos claros de comunicación y resolución de conflictos, y revisar si existen prácticas que puedan constituir acoso laboral según la Ley 1010 de 2006.", caps: "Liderazgo humanizado y transformacional · Prevención del acoso laboral (Ley 1010/2006) · Convivencia laboral y protocolo de conflictos · Comunicación asertiva y resolución de conflictos · Inteligencia emocional y gestión de equipos" }
     }
   };
 
-  // Banner diagnóstico general
+  // ── Banner diagnóstico general (altura dinámica) ──
   const nivelColorArr = globalPct>=70?[46,125,50]:globalPct>=50?[245,127,23]:[198,40,40];
+  const msgG = globalPct>=70
+    ? "El ambiente laboral es percibido favorablemente. Se recomienda mantener las buenas prácticas, profundizar en las dimensiones con mayor potencial y consolidar una cultura de mejora continua."
+    : globalPct>=50
+    ? "Se identifican dimensiones prioritarias que requieren intervención planificada. La organización tiene una base positiva desde la cual es posible avanzar hacia un clima de alto desempeño."
+    : "El diagnóstico revela un nivel de satisfacción bajo que exige acciones correctivas inmediatas, sistémicas y participativas. Se recomienda priorizar las dimensiones críticas con apoyo profesional y compromiso directivo.";
+
+  doc.setFontSize(8.5);
+  const msgGLines = doc.splitTextToSize(msgG, CW - 12);
+  const bannerH = 5 + 6 + 2 + msgGLines.length * 4.3 + 4;
   doc.setFillColor(...nivelColorArr);
-  doc.roundedRect(MARGIN, y, CW, 18, 4, 4, "F");
+  doc.roundedRect(MARGIN, y, CW, bannerH, 4, 4, "F");
   doc.setTextColor(255,255,255);
   doc.setFont("helvetica","bold");
   doc.setFontSize(11);
   doc.text(`Diagnóstico General: ${nivelG.label}  (${globalPct}%)`, W/2, y+8, {align:"center"});
   doc.setFont("helvetica","normal");
-  doc.setFontSize(9);
-  const msgG = globalPct>=70?"Ambiente laboral saludable. Acciones de mantenimiento y mejora continua recomendadas.":
-               globalPct>=50?"Se identifican áreas prioritarias que requieren intervención planificada.":
-               "Se requieren acciones inmediatas para mejorar el bienestar de los colaboradores.";
-  doc.text(msgG, W/2, y+14.5, {align:"center"});
-  y += 24;
+  doc.setFontSize(8.5);
+  msgGLines.forEach((line, i) => {
+    doc.text(line, W/2, y + 15 + i * 4.3, {align:"center"});
+  });
+  y += bannerH + 4;
 
   promedios.forEach(d => {
     const tipo = d.pct>=70?"alta":d.pct>=45?"media":"baja";
@@ -963,27 +971,49 @@ async function generarPDF() {
     const nv = getNivel(d.pct);
     const rgb = nv.color.replace("#","").match(/../g).map(h=>parseInt(h,16));
 
-    // ── Constantes de layout para esta card ──
-    const PAD_L   = 10;   // padding izquierdo del texto dentro de la card
-    const TXT_W   = CW - PAD_L - 6; // ancho útil de texto (margen derecho 6mm)
-    const CAP_W   = CW - PAD_L - 6; // mismo ancho para el bloque verde
-    const REC_LH  = 4.5;  // interlineado recomendación (font 8.5)
-    const CAP_LH  = 4.0;  // interlineado capacitaciones (font 7.5)
-    const CON_LH  = 3.8;  // interlineado contacto (font 7)
+    // ── Fuentes y constantes de layout ──
+    const PAD_X  = 8;                   // padding horizontal dentro de la card
+    const PAD_XI = 5;                   // padding horizontal dentro del bloque verde
+    // Ancho de texto = ancho card - acento izq (4) - PAD_X - margen derecho (6)
+    const TXT_W  = CW - 4 - PAD_X - 6;
+    // Ancho dentro del bloque verde = ancho card - 10 (margen bloque) - PAD_XI*2
+    const INT_W  = CW - 10 - PAD_XI * 2;
 
-    const recLines    = doc.splitTextToSize(info.rec, TXT_W);
-    const capLines    = doc.splitTextToSize("Capacitaciones disponibles: " + info.caps, CAP_W - 4);
-    const contactLine = doc.splitTextToSize("Para acompañamiento en la implementación, contacte a su asesor empresarial de la Agencia de Empleo y Emprendimiento Comfenalco Antioquia.", CAP_W - 4);
+    // Interlineados ajustados para jsPDF (font * 0.3528 * 1.25 + 0.4)
+    const HDR_FS = 9;    const HDR_LH = 5.4;
+    const REC_FS = 8.5;  const REC_LH = 5.1;
+    const CAP_FS = 7.5;  const CAP_LH = 4.4;
+    const CON_FS = 7;    const CON_LH = 4.0;
 
-    const totalH = 10
-      + recLines.length    * REC_LH
-      + 5
-      + capLines.length    * CAP_LH
-      + contactLine.length * CON_LH
-      + 7;
+    // Calcular líneas ANTES de dibujar para conocer la altura real
+    doc.setFont("helvetica","bold");   doc.setFontSize(HDR_FS);
+    const headerLines = doc.splitTextToSize(`${d.label}  ·  ${d.pct}%  ·  ${nv.label}`, TXT_W);
+
+    doc.setFont("helvetica","normal"); doc.setFontSize(REC_FS);
+    const recLines = doc.splitTextToSize(info.rec, TXT_W);
+
+    doc.setFont("helvetica","bold");   doc.setFontSize(CAP_FS);
+    const capLines = doc.splitTextToSize("Capacitaciones: " + info.caps, INT_W);
+
+    doc.setFont("helvetica","italic"); doc.setFontSize(CON_FS);
+    const conLine = doc.splitTextToSize(
+      "Para acompañamiento, contacte a su asesor empresarial de la Agencia de Empleo y Emprendimiento Comfenalco Antioquia.",
+      INT_W
+    );
+
+    // Alturas de cada sección
+    const hdrH = headerLines.length * HDR_LH;
+    const recH = recLines.length    * REC_LH;
+    const capH = capLines.length    * CAP_LH;
+    const conH = conLine.length     * CON_LH;
+
+    // Altura bloque verde interior (padding top 4 + contenido + padding bot 4)
+    const intBlockH = 4 + capH + 2 + conH + 4;
+    // Altura total card  (pad top 5 + header + gap 3 + rec + gap 5 + bloque + pad bot 5)
+    const totalH = 5 + hdrH + 3 + recH + 5 + intBlockH + 5;
 
     // ── Salto de página si no cabe ──
-    if (y + totalH > 270) {
+    if (y + totalH > 272) {
       doc.addPage();
       doc.setFillColor(255,255,255);
       doc.rect(0,0,W,8,"F");
@@ -994,43 +1024,43 @@ async function generarPDF() {
       y = 18;
     }
 
-    // ── Fondo de la card ──
-    doc.setFillColor(...rgb.map(c=>Math.min(255,c+165)));
+    // ── Fondo de la card con altura exacta ──
+    doc.setFillColor(...rgb.map(c => Math.min(255, c + 160)));
     doc.roundedRect(MARGIN, y, CW, totalH, 3, 3, "F");
-    // Acento izquierdo
     doc.setFillColor(...rgb);
     doc.roundedRect(MARGIN, y, 4, totalH, 1, 1, "F");
+
+    // Cursor vertical
+    let curY = y + 5;
 
     // ── Encabezado ──
     doc.setTextColor(...rgb);
     doc.setFont("helvetica","bold");
-    doc.setFontSize(9);
-    const headerTxt = `${d.label}  ·  ${d.pct}%  ·  ${nv.label}`;
-    const headerLines = doc.splitTextToSize(headerTxt, TXT_W);
-    doc.text(headerLines, MARGIN + PAD_L, y + 7);
+    doc.setFontSize(HDR_FS);
+    headerLines.forEach((line, i) => doc.text(line, MARGIN + 4 + PAD_X, curY + i * HDR_LH));
+    curY += hdrH + 3;
 
     // ── Texto de recomendación ──
     doc.setFont("helvetica","normal");
-    doc.setFontSize(8.5);
+    doc.setFontSize(REC_FS);
     doc.setTextColor(...GRIS);
-    const recY = y + 7 + headerLines.length * 4 + 1;
-    doc.text(recLines, MARGIN + PAD_L, recY);
+    recLines.forEach((line, i) => doc.text(line, MARGIN + 4 + PAD_X, curY + i * REC_LH));
+    curY += recH + 5;
 
-    // ── Bloque verde de capacitaciones ──
-    let yc = recY + recLines.length * REC_LH + 3;
-    const capBlockH = capLines.length * CAP_LH + contactLine.length * CON_LH + 7;
-    doc.setFillColor(9,74,75);
-    doc.roundedRect(MARGIN + 5, yc - 2, CW - 10, capBlockH, 2, 2, "F");
+    // ── Bloque verde interior ──
+    doc.setFillColor(9, 74, 75);
+    doc.roundedRect(MARGIN + 5, curY, CW - 10, intBlockH, 2, 2, "F");
 
-    doc.setTextColor(255,255,255);
+    let intY = curY + 4;
+    doc.setTextColor(255, 255, 255);
     doc.setFont("helvetica","bold");
-    doc.setFontSize(7.5);
-    doc.text(capLines, MARGIN + PAD_L + 2, yc + 2.5);
+    doc.setFontSize(CAP_FS);
+    capLines.forEach((line, i) => doc.text(line, MARGIN + 5 + PAD_XI, intY + i * CAP_LH));
+    intY += capH + 2;
 
-    yc += capLines.length * CAP_LH + 2;
     doc.setFont("helvetica","italic");
-    doc.setFontSize(7);
-    doc.text(contactLine, MARGIN + PAD_L + 2, yc + 1.5);
+    doc.setFontSize(CON_FS);
+    conLine.forEach((line, i) => doc.text(line, MARGIN + 5 + PAD_XI, intY + i * CON_LH));
 
     y += totalH + 5;
   });
